@@ -1,17 +1,28 @@
-import Link from "next/link";
+// const getLeftData = async () => {
+//   const res = await fetch("http://localhost:4000/items", {
+//     next: { revalidate: 10 },
+//   });
+//   const data = await res.json();
+//   return data;
+// };
 
-const getLeftData = async () => {
-  const res = await fetch("http://localhost:4000/items");
+export const getTimeApi = async () => {
+  const res = await fetch("https://worldtimeapi.org/api/ip", {
+    next: { revalidate: 1 },
+  });
   const data = await res.json();
   return data;
 };
 
+
 const Left = async () => {
   await new Promise((resolve) => setTimeout(resolve, 5000));
-  let first = await getLeftData();
+  // let first = await getLeftData();
+  let first = await getTimeApi();
   return (
     <div>
-      {first.map((element, index) => (
+      <h1>{first.datetime}</h1>
+      {/* {first.map((element, index) => (
         <div key={index} style={leftComponentStyle}>
           <p>{element.id}</p>
           <p>{element.title}</p>
@@ -21,7 +32,7 @@ const Left = async () => {
           <Link href={`/dashboard/${element.id}`}>Open Link</Link>
           <hr></hr>
         </div>
-      ))}
+      ))} */}
     </div>
   );
 };
