@@ -3,9 +3,7 @@
 import { useEffect } from "react";
 
 export default function Error({ error, reset }) {
-  useEffect(() => {
-    console.log("aaa", error);
-  }, [error]);
+  useEffect(() => {}, [error]);
 
   return (
     <div>
