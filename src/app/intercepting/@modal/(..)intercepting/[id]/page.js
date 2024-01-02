@@ -1,6 +1,7 @@
 import Modal from "@/components/Modal";
 import { getItemDataId } from "@/utils/api";
-import styles from "/Users/tagline/Documents/Ujjwal/Next JS Projects/next-app-demo/src/app/page.module.css";
+// import styles from "/Users/tagline/Documents/Ujjwal/Next JS Projects/next-app-demo/src/app/page.module.css";
+import styles from "../../../../page.module.css";
 
 const PhotoPage = async ({ params }) => {
   const data = await getItemDataId(params.id);
