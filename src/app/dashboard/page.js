@@ -1,6 +1,5 @@
 const Dashboard = async () => {
   const res = await fetch("https://worldtimeapi.org/api/ip", {
-    cache: "default",
     next: {
       revalidate: 5,
     },
