@@ -9,13 +9,7 @@ const Intercepting = async () => {
     <div className={styles.product_container}>
       {data.map((element, index) => (
         <div key={index} className={styles.product_item}>
-          <Link href={`/intercepting/${element.id}`}>
-            <img
-              src={element.image}
-              alt={element.title}
-              className={styles.product_image}
-            />
-          </Link>
+          <Link href={`/intercepting/${element.id}`}>Click me</Link>
           <div className={styles.product_title}>{element.title}</div>
           <div className={styles.product_price}>{element.price}</div>
           <div className={styles.product_description}>

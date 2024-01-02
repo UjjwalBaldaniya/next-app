@@ -1,6 +1,5 @@
 import Modal from "@/components/Modal";
 import { getItemDataId } from "@/utils/api";
-// import styles from "/Users/tagline/Documents/Ujjwal/Next JS Projects/next-app-demo/src/app/page.module.css";
 import styles from "../../../../page.module.css";
 
 const PhotoPage = async ({ params }) => {
@@ -9,12 +8,6 @@ const PhotoPage = async ({ params }) => {
     <Modal>
       <div className={styles.product_container}>
         <div className={styles.product_item}>
-          {" "}
-          <img
-            src={data.image}
-            alt={data.title}
-            className={styles.product_image}
-          />
           <div className={styles.product_title}>{data.title}</div>
           <div className={styles.product_price}>{data.price}</div>
           <div className={styles.product_description}>{data.description}</div>
