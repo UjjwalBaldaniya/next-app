@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { setAuthToken, setAuthTokenRole } from "@/utils/auth";
-import { ACCESS_TOKEN } from "@/utils/constant";
+import { ACCESS_TOKEN, TEACHER } from "@/utils/constant";
 import { ManageErrorList, keys, length } from "@/utils/javascript";
 import { setLocalStorageItem } from "@/utils/localStorage";
 import validation from "@/utils/validation";
+import useUseRoute from "@/hooks/useUseRoute";
 
 const SignInContainer = () => {
+  const { handlePush } = useUseRoute();
   const [signInField, setSignInField] = useState({
     email: "",
     password: "",
@@ -36,8 +38,9 @@ const SignInContainer = () => {
       if (res.ok) {
         const { data } = await res.json();
         setLocalStorageItem(ACCESS_TOKEN, data);
-        setAuthToken(data?.token);
         setAuthTokenRole(data?.role);
+        setAuthToken(data?.token);
+        handlePush(data?.role === TEACHER ? "/parallel" : "/dashboard");
       } else {
         console.error("Login failed:", res?.data);
       }
