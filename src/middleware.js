@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-// import { jwtDecode } from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import { authPages, studentPages, teacherPages } from "./utils/apiPath";
 import { ROLE_TOKEN_KEY, TEACHER, TOKEN_KEY } from "./utils/constant";
 
@@ -9,13 +9,9 @@ export const middleware = (request) => {
 
   const isTokenExpired = () => {
     if (authToken) {
-      import("jwt-decode").then(({ jwtDecode }) => {
-        const decodedToken = jwtDecode(authToken);
-        const currentTime = Date.now() / 1000;
-        console.log(currentTime, decodedToken);
-
-        return decodedToken.exp < currentTime;
-      });
+      const decodedToken = jwtDecode(authToken);
+      const currentTime = Date.now() / 1000;
+      return decodedToken.exp < currentTime;
     }
     return false;
   };
